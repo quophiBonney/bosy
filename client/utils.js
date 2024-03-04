@@ -1,1 +1,1 @@
-export const baseURL = "bosy-backend.vercel.app";
+export const baseURL = "https://bosy-backend.vercel.app";
