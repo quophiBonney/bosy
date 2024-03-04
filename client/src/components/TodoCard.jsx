@@ -4,6 +4,7 @@ import { Modal } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { HiShare } from "react-icons/hi";
+import { baseURL } from "../../utils";
 
 const TodosCard = ({ todoData }) => {
   const [todoList, setTodoList] = useState([]);
@@ -20,7 +21,7 @@ const TodosCard = ({ todoData }) => {
   });
   const handleFetchTodo = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/todos");
+      const response = await axios.get(baseURL);
       const todoData = response.data;
       setTodoList(todoData);
     } catch (error) {
@@ -34,10 +35,7 @@ const TodosCard = ({ todoData }) => {
 
   const handleAddTodo = async () => {
     try {
-      const insertTodo = await axios.post(
-        "http://localhost:5000/api/todos",
-        data
-      );
+      const insertTodo = await axios.post(baseURL, data);
       toast.success(insertTodo.data.message);
       setShow(false);
       handleFetchTodo();
@@ -52,10 +50,7 @@ const TodosCard = ({ todoData }) => {
         toast.error("No todo selected for update.");
         return;
       }
-      const response = await axios.put(
-        `http://localhost:5000/api/todos/${selectedTodo._id}`,
-        data
-      );
+      const response = await axios.put(`${baseURL}/${selectedTodo._id}`, data);
       toast.success(response.data.message);
       setUpdateModal(false);
       // Refresh todo list after update
@@ -67,9 +62,7 @@ const TodosCard = ({ todoData }) => {
 
   const handleDeleteTodo = async (_id) => {
     try {
-      const deleteTodo = await axios.delete(
-        `http://localhost:5000/api/todos/${_id}`
-      );
+      const deleteTodo = await axios.delete(`${baseURL}/${_id}`);
       toast.success(deleteTodo.data.message);
       // Refresh todo list after delete
       handleFetchTodo();
@@ -94,10 +87,7 @@ const TodosCard = ({ todoData }) => {
         toast.error("Todo not found.");
         return;
       }
-      const response = await axios.post(
-        `https://localhost:5000/api/todos/${_id}`,
-        todo
-      );
+      const response = await axios.post(`${baseURL}/${_id}`, todo);
       const { whatsappLink } = response.data;
       setWhatsappLink(whatsappLink);
     } catch (error) {
