@@ -10,15 +10,12 @@ dotenv.config();
 const app = express();
 app.use(express());
 
+const port = process.env.PORT || 5000;
 //middleware
-app.use(
-  cors({
-    origin: "https://bosy-backend.vercel.app",
-  })
-);
 app.use(express());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 //routes
 app.use("/api/todos", todoRoutes);
@@ -31,6 +28,6 @@ mongoose
   .then(() => console.log("Database connected"))
   .then((err) => console.log(err));
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server started running on ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log(`Server started running on ${port}`);
 });
