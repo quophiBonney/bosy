@@ -1,0 +1,66 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background: hsl(0, 0%, 0%) !important;
+}
+.h-1,
+.h-2 {
+  font-family: sans-serif;
+  font-weight: 800;
+}
+.h-1 {
+  font-size: 3rem;
+}
+.h-2 {
+  font-size: 2rem;
+}
+.h-3,
+.h-4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.p {
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.modal {
+  --bs-modal-width: 800px !important;
+}
+.home-card {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  transition: 0.3s ease-in-out;
+  position: relative;
+}
+.home-card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure the particles are behind other content */
+}
+.home-add-todo-wrapper {
+  text-align: end;
+}
+@media screen and (max-width: 768px) {
+  .h-1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+  .p {
+    font-size: 1.05rem;
+  }
+  .home-add-todo-wrapper {
+    text-align: start;
+  }
+}
