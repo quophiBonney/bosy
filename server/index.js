@@ -11,7 +11,11 @@ const app = express();
 app.use(express());
 
 //middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://bosy-backend.vercel.app",
+  })
+);
 app.use(express());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -23,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log("Database connected"))
   .then((err) => console.log(err));
 
