@@ -49,7 +49,7 @@ const deleteTodo = async (req, res) => {
 const shareTodo = async (req, res) => {
   try {
     const todoToShare = req.body;
-    const message = `On my todos, I will be ${JSON.stringify(todoShare)}`;
+    const message = `On my todos, I will be ${JSON.stringify(todoToShare)}`;
     const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(
       message
     )}`;

@@ -19,8 +19,9 @@ app.use(cors());
 
 //routes
 app.use("/api/todos", todoRoutes);
+
 app.get("/", (req, res) => {
-  res.send("Bosy API");
+  res.send("Bosy backend API");
 });
 
 mongoose
