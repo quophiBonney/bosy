@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://bosy.vercel.app",
+    origin: "https://bosy-backend.vercel.app",
   })
 );
 //routes
