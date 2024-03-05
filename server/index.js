@@ -15,8 +15,12 @@ const port = process.env.PORT || 5000;
 app.use(express());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(cors({ origin: "https://bosy.vercel.app" }));
 
+app.use(
+  cors({
+    origin: "https://bosy.vercel.app",
+  })
+);
 //routes
 app.use("/api/todos", todoRoutes);
 
