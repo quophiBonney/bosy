@@ -87,12 +87,7 @@ const TodosCard = ({ todoData }) => {
         toast.error("Todo not found.");
         return;
       }
-      const response = await axios.post(
-        `https://api.whatsapp.com/send?text=${encodeURIComponent(
-          JSON.stringify(todo)
-        )}`,
-        todo
-      );
+      const response = await axios.post(`${baseURL}/api/todos/${_id}`, todo);
       const { whatsappLink } = response.data;
       setWhatsappLink(whatsappLink);
     } catch (error) {
@@ -105,7 +100,7 @@ const TodosCard = ({ todoData }) => {
         <h4 className="h-4 text-uppercase">Todos List</h4>
         <p className="p">Below are the list of todos you've saved.</p>
       </div>
-      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 home-add-todo-wrapper mb-4 px-3">
+      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 home-add-todo-wrapper mb-4 px-4">
         <button
           className="p-2 border-0 btn btn-light text-primary fw-bold"
           onClick={() => setShow(true)}
@@ -116,7 +111,7 @@ const TodosCard = ({ todoData }) => {
       <div className="row">
         {todoList.map((done) => (
           <div
-            className="col-xs-12 col-sm-12 col-md-6 col-lg-4 text-decoration-none main-container mb-3 d-flex"
+            className="col-xs-12 col-sm-6 col-md-6 col-lg-4 text-decoration-none main-container mb-3 d-flex"
             key={done._id}
           >
             <div className="card shadow text-center px-4 flex-fill h-100 home-card text-light d-flex flex-column justify-content-between ">
