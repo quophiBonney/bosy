@@ -1,5 +1,5 @@
 const Todos = require("../models/todos.module");
-
+const axios = require("axios");
 const getTodos = async (req, res) => {
   try {
     const todos = await Todos.find({});
@@ -48,14 +48,16 @@ const deleteTodo = async (req, res) => {
 
 const shareTodo = async (req, res) => {
   try {
-    const todoToShare = req.body;
-    const message = `On my todos, I will be ${JSON.stringify(todoToShare)}`;
-    const whatsappLink = `https://api.whatsapp.com/send?text=${encodeURIComponent(
-      message
-    )}`;
-    res.status(200).json({ whatsappLink });
+    const response = await axios.get("https://api.whatsapp.com/send", {
+      params: {
+        text: req.body.message, // Pass the message from the request body to the WhatsApp API
+      },
+    });
+    // Return the response from the WhatsApp API to the client
+    res.json(response.data);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log("Error sharing to whatsapp:", error);
+    res.status(500).json({ error: "Failed to send WhatsApp message" });
   }
 };
 
