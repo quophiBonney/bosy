@@ -21,7 +21,7 @@ const TodosCard = ({ todoData }) => {
   });
   const handleFetchTodo = async () => {
     try {
-      const response = await axios.get(`${baseURL}/api/`);
+      const response = await axios.get("/api/todos");
       const todoData = response.data;
       setTodoList(todoData);
     } catch (error) {
@@ -35,7 +35,7 @@ const TodosCard = ({ todoData }) => {
 
   const handleAddTodo = async () => {
     try {
-      const insertTodo = await axios.post(`${baseURL}/api/`, data);
+      const insertTodo = await axios.post("/api/todos", data);
       toast.success(insertTodo.data.message);
       setShow(false);
       handleFetchTodo();
