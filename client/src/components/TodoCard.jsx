@@ -21,7 +21,7 @@ const TodosCard = ({ todoData }) => {
   });
   const handleFetchTodo = async () => {
     try {
-      const response = await axios.get("/api/todos");
+      const response = await axios.get("https://bosy-backend/api/todos");
       const todoData = response.data;
       setTodoList(todoData);
     } catch (error) {
