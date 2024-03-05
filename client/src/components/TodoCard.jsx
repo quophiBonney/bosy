@@ -62,7 +62,7 @@ const TodosCard = ({ todoData }) => {
 
   const handleDeleteTodo = async (_id) => {
     try {
-      const deleteTodo = await axios.delete(`${baseURL}/${_id}`);
+      const deleteTodo = await axios.delete(`${baseURL}/api/todos/${_id}`);
       toast.success(deleteTodo.data.message);
       // Refresh todo list after delete
       handleFetchTodo();
