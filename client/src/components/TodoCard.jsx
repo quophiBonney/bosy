@@ -87,7 +87,10 @@ const TodosCard = ({ todoData }) => {
         toast.error("Todo not found.");
         return;
       }
-      const response = await axios.post(`${baseURL}/${_id}`, todo);
+      const response = await axios.post(
+        `https://api.whatsapp.com/send?text=${encodeURIComponent(todo)}`,
+        todo
+      );
       const { whatsappLink } = response.data;
       setWhatsappLink(whatsappLink);
     } catch (error) {
