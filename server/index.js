@@ -16,6 +16,7 @@ app.use(express());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors({ origin: "*" }));
+
 //routes
 app.use("/api/todos", todoRoutes);
 
