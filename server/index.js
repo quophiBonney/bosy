@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 const corsOptions = {
-  origin: "https://bosy-backend.vercel.app",
+  origin: "https://bosy.vercel.app",
   methods: ["POST", "GET", "DELETE", "PUT"],
   credentials: true, // Allow credentials (cookies, authorization headers)
 };
