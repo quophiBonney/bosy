@@ -16,11 +16,15 @@ app.use(express());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use(
-  cors({
-    origin: "https://bosy-backend.vercel.app/",
-  })
-);
+const corsOptions = {
+  origin: "https://bosy-backend.vercel.app",
+  methods: ["POST", "GET", "DELETE", "PUT"],
+  credentials: true, // Allow credentials (cookies, authorization headers)
+};
+
+// Apply CORS middleware with the specified options
+app.use(cors(corsOptions));
+
 //routes
 app.use("/api/todos", todoRoutes);
 
