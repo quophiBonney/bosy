@@ -18,9 +18,10 @@ const TodosCard = ({ todoData }) => {
     title: "",
     description: "",
   });
+  const baseURL = "http://localhost:5000";
   const handleFetchTodo = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.BASE_URL}/api/todos`);
+      const response = await axios.get(`${baseURL}/api/todos`);
       const todoData = response.data;
       setTodoList(todoData);
     } catch (error) {
@@ -34,10 +35,7 @@ const TodosCard = ({ todoData }) => {
 
   const handleAddTodo = async () => {
     try {
-      const insertTodo = await axios.post(
-        `${import.meta.env.BASE_URL}/api/todos`,
-        data
-      );
+      const insertTodo = await axios.post(`${baseURL}/api/todos`, data);
       toast.success(insertTodo.data.message);
       setShow(false);
       handleFetchTodo();
@@ -52,10 +50,7 @@ const TodosCard = ({ todoData }) => {
         toast.error("No todo selected for update.");
         return;
       }
-      const response = await axios.put(
-        `${import.meta.env.BASE_URL}/${selectedTodo._id}`,
-        data
-      );
+      const response = await axios.put(`${baseURL}/${selectedTodo._id}`, data);
       toast.success(response.data.message);
       setUpdateModal(false);
       // Refresh todo list after update
@@ -67,9 +62,7 @@ const TodosCard = ({ todoData }) => {
 
   const handleDeleteTodo = async (_id) => {
     try {
-      const deleteTodo = await axios.delete(
-        `${import.meta.env.BASE_URL}/${_id}`
-      );
+      const deleteTodo = await axios.delete(`${baseURL}/${_id}`);
       toast.success(deleteTodo.data.message);
       // Refresh todo list after delete
       handleFetchTodo();
