@@ -88,7 +88,9 @@ const TodosCard = ({ todoData }) => {
         return;
       }
       const response = await axios.post(
-        `https://api.whatsapp.com/send?text=${encodeURIComponent(todo)}`,
+        `https://api.whatsapp.com/send?text=${encodeURIComponent(
+          JSON.stringify(todo)
+        )}`,
         todo
       );
       const { whatsappLink } = response.data;
