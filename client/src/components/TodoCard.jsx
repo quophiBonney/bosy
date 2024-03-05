@@ -50,7 +50,10 @@ const TodosCard = ({ todoData }) => {
         toast.error("No todo selected for update.");
         return;
       }
-      const response = await axios.put(`${baseURL}/${selectedTodo._id}`, data);
+      const response = await axios.put(
+        `${baseURL}/api/todos/${selectedTodo._id}`,
+        data
+      );
       toast.success(response.data.message);
       setUpdateModal(false);
       // Refresh todo list after update
