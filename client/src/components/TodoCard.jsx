@@ -21,7 +21,7 @@ const TodosCard = ({ todoData }) => {
   });
   const handleFetchTodo = async () => {
     try {
-      const response = await axios.get("https://bosy-backend/api/todos");
+      const response = await axios.get("http://localhost:5000/api/todos");
       const todoData = response.data;
       setTodoList(todoData);
     } catch (error) {
@@ -35,7 +35,10 @@ const TodosCard = ({ todoData }) => {
 
   const handleAddTodo = async () => {
     try {
-      const insertTodo = await axios.post("/api/todos", data);
+      const insertTodo = await axios.post(
+        "http://localhost:5000/api/todos",
+        data
+      );
       toast.success(insertTodo.data.message);
       setShow(false);
       handleFetchTodo();
