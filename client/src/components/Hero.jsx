@@ -1,6 +1,7 @@
 import React from "react";
 import { Typewriter, Cursor } from "react-simple-typewriter";
 import TodosCard from "./TodoCard";
+import logo from '../../public/bosy_logo.png'
 const Hero = () => {
   const todo = Typewriter({
     words: ["Save", "Edit", "Delete"],
@@ -10,9 +11,10 @@ const Hero = () => {
     cursorBlinking: 0,
   });
   return (
-    <div className="container-fluid" style={{ zIndex: "9999" }}>
+    <div className="container-fluid">
+      <img src={logo} alt="bosy logo" className="img-fluid" style={{height: 140, width: 140}}/>
       <div className="row vh-100 justify-content-center align-items-center">
-        <div className="col-12 mt-5 mb-5 text-light text-center">
+        <div className="col-12 mt-3 mb-5 text-light text-center">
           <h1 className="h-1 text-light mt-5 text-uppercase">
             <span className="text-light-green">
               {todo}
