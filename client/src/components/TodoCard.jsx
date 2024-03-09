@@ -99,7 +99,7 @@ const TodosCard = ({ todoData }) => {
   };
   return (
     <>
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-light px-4 mb-4">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-light px-5 mb-4">
         <h4 className="h-4 text-uppercase">Todos List</h4>
         <p className="p">Below are the list of todos you've saved.</p>
          <button
@@ -109,7 +109,7 @@ const TodosCard = ({ todoData }) => {
           Add Todo
         </button>
       </div>
-      <div className="row">
+      <div className="row px-4">
         {todoList.map((done) => (
           <div
             className="col-xs-12 col-sm-6 col-md-6 col-lg-4 text-decoration-none main-container mb-3 d-flex"

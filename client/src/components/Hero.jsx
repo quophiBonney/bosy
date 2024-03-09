@@ -22,7 +22,7 @@ const Hero = () => {
             </span>
             &nbsp; Your Todos
           </h1>
-          <h2 className="p">
+          <h2 className="p px-3">
             With <strong>BOSY</strong> you easily add, edit and delete your
             todo. You can as well print your individual todos.
           </h2>
