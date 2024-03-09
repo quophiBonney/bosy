@@ -12,6 +12,7 @@ const getTodos = async (req, res) => {
 const addTodo = async (req, res) => {
   try {
     const newTodo = await Todos.create(req.body);
+    newTodo.save();
     res.status(200).json({ message: "Todo added successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });

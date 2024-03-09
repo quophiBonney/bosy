@@ -8,7 +8,6 @@ const todoRoutes = require("./routes/todos.route.js");
 dotenv.config();
 
 const app = express();
-app.use(express());
 
 const port = process.env.PORT || 5000;
 //middleware
