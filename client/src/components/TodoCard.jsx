@@ -99,12 +99,10 @@ const TodosCard = ({ todoData }) => {
   };
   return (
     <>
-      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-light px-4">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-light px-4 mb-4">
         <h4 className="h-4 text-uppercase">Todos List</h4>
         <p className="p">Below are the list of todos you've saved.</p>
-      </div>
-      <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 home-add-todo-wrapper mb-4 px-4">
-        <button
+         <button
           className="p-2 border-0 btn btn-light text-primary fw-bold"
           onClick={() => setShow(true)}
         >

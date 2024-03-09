@@ -49,12 +49,9 @@ body {
   height: 100%;
   z-index: -1; /* Ensure the particles are behind other content */
 }
-.home-add-todo-wrapper {
-  text-align: end;
-}
 @media screen and (max-width: 769px) {
   .h-1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 800;
   }
   .p {
@@ -62,7 +59,5 @@ body {
   }
 }
 @media screen and (max-width: 575px) {
-  .home-add-todo-wrapper {
-    text-align: start;
-  }
+
 }

@@ -18,12 +18,11 @@ const Hero = () => {
               {todo}
               <Cursor />
             </span>
-            &nbsp; Your Todos With Ease
+            &nbsp; Your Todos
           </h1>
           <h2 className="p">
             With <strong>BOSY</strong> you easily add, edit and delete your
-            todo. You can as well share the the do with your family and friends
-            whatsapp.
+            todo. You can as well print your individual todos.
           </h2>
         </div>
         <TodosCard />
