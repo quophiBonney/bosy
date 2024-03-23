@@ -18,7 +18,7 @@ const TodosCard = ({ todoData }) => {
     title: "",
     description: "",
   });
-  const baseURL = "https://bosy-backend.vercel.app/";
+  const baseURL = "https://bosy-backend.vercel.app";
   const handleFetchTodo = async () => {
     try {
       const response = await axios.get(`${baseURL}/api/todos`);
