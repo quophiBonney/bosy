@@ -18,7 +18,7 @@ const TodosCard = ({ todoData }) => {
     title: "",
     description: "",
   });
-  const baseURL = "http://localhost:5000";
+  const baseURL = "https://bosy-backend.vercel.app/";
   const handleFetchTodo = async () => {
     try {
       const response = await axios.get(`${baseURL}/api/todos`);
@@ -102,7 +102,7 @@ const TodosCard = ({ todoData }) => {
       <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-light px-5 mb-4">
         <h4 className="h-4 text-uppercase">Todos List</h4>
         <p className="p">Below are the list of todos you've saved.</p>
-         <button
+        <button
           className="p-2 border-0 btn btn-light text-primary fw-bold"
           onClick={() => setShow(true)}
         >
