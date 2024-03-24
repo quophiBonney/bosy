@@ -21,7 +21,7 @@ const TodosCard = ({ todoData }) => {
   const baseURL = "https://bosy-backend.vercel.app";
 
   useEffect(() => {
-    handleFetchTodo({ userId });
+    handleFetchTodo();
   }, []);
 
   const handleFetchTodo = async () => {
