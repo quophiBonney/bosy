@@ -109,7 +109,7 @@ const TodosCard = ({ todoData }) => {
           Add Todo
         </button>
       </div>
-      <div className="row px-4">
+      <div className="row px-2">
         {todoList.map((done) => (
           <div
             className="col-xs-12 col-sm-6 col-md-6 col-lg-4 text-decoration-none main-container mb-3 d-flex"
