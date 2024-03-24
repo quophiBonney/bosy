@@ -92,11 +92,14 @@ function App() {
   );
   return (
     <>
-      <Hero />
-      <Particles
-        id="tsparticles"
-        particlesLoaded={particlesLoaded}
-        options={options}/>
+      <div className="vh-100">
+        <Particles
+          id="tsparticles"
+          particlesLoaded={particlesLoaded}
+          options={options}
+        />
+        <Hero />
+      </div>
     </>
   );
 }

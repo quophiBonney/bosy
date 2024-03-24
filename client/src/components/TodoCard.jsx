@@ -99,7 +99,7 @@ const TodosCard = ({ todoData }) => {
   };
   return (
     <>
-      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-light px-5 mb-4">
+      <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-light px-3 mb-2">
         <h4 className="h-4 text-uppercase">Todos List</h4>
         <p className="p">Below are the list of todos you've saved.</p>
         <button
@@ -115,7 +115,7 @@ const TodosCard = ({ todoData }) => {
             className="col-xs-12 col-sm-6 col-md-6 col-lg-4 text-decoration-none main-container mb-3 d-flex"
             key={done._id}
           >
-            <div className="card shadow text-center px-4 flex-fill h-100 home-card text-light d-flex flex-column justify-content-between ">
+            <div className="card shadow text-center px-2 flex-fill h-100 home-card text-light d-flex flex-column justify-content-between ">
               <h4 className="h-4 mt-3 text-uppercase">{done.title}</h4>
               <p className="p">{done.description}</p>
               <div className="text-center mb-2">
