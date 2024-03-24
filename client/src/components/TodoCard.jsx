@@ -21,12 +21,12 @@ const TodosCard = ({ todoData }) => {
   const baseURL = "https://bosy-backend.vercel.app";
 
   useEffect(() => {
-    handleFetchTodo();
+    handleFetchTodo({ userId });
   }, []);
 
-  const handleFetchTodo = async ({ userId }) => {
+  const handleFetchTodo = async () => {
     try {
-      const response = await axios.get(`${baseURL}/api/todos/${userId}`);
+      const response = await axios.get(`${baseURL}/api/todos`);
       const todoData = response.data;
       setTodoList(todoData);
     } catch (error) {
