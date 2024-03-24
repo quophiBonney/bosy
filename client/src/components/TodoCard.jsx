@@ -24,9 +24,9 @@ const TodosCard = ({ todoData }) => {
     handleFetchTodo();
   }, []);
 
-  const handleFetchTodo = async () => {
+  const handleFetchTodo = async ({ userId }) => {
     try {
-      const response = await axios.get(`${baseURL}/api/todos/USER_ID`);
+      const response = await axios.get(`${baseURL}/api/todos/${userId}`);
       const todoData = response.data;
       setTodoList(todoData);
     } catch (error) {
