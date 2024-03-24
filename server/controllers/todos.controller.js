@@ -2,7 +2,8 @@ const Todos = require("../models/todos.module");
 const axios = require("axios");
 const getTodos = async (req, res) => {
   try {
-    const todos = await Todos.find({});
+    const userId = req.params.userId;
+    const todos = await Todos.find({ userId });
     res.status(200).json(todos);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -11,8 +12,9 @@ const getTodos = async (req, res) => {
 
 const addTodo = async (req, res) => {
   try {
-    const newTodo = await Todos.create(req.body);
-    newTodo.save();
+    const { userId, title, description } = req.body;
+    const newTodo = new Todos({ userId, title, description });
+    await newTodo.save();
     res.status(200).json({ message: "Todo added successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });

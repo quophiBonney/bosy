@@ -9,7 +9,7 @@ const {
   shareTodo,
 } = require("../controllers/todos.controller.js");
 
-router.get("/", getTodos);
+router.get("/:userId", getTodos);
 router.post("/", addTodo);
 router.put("/:id", updateTodo);
 router.delete("/:id", deleteTodo);
