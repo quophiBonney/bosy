@@ -9,9 +9,6 @@ const TodosSchema = new mongoose.Schema({
     type: String,
     required: [true, "Description is required"],
   },
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-  },
   time: {
     type: Date,
     default: Date.now,

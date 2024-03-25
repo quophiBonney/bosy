@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { HiPrinter } from "react-icons/hi";
 
-const TodosCard = ({ userId }) => {
+const TodosCard = () => {
   const [todoList, setTodoList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
@@ -20,13 +20,13 @@ const TodosCard = ({ userId }) => {
   const baseURL = "https://bosy-backend.vercel.app";
 
   useEffect(() => {
-    handleFetchTodo({ userId });
+    handleFetchTodo();
   }, []);
 
   const handleFetchTodo = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${baseURL}/api/todos/userId=${userId}`);
+      const response = await axios.get(`${baseURL}/api/todos/`);
       const todoData = response.data;
       setTodoList(todoData);
     } catch (error) {
