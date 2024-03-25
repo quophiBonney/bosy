@@ -3,7 +3,7 @@ import axios from "axios";
 import { Modal } from "react-bootstrap";
 import { toast } from "react-hot-toast";
 import { FaTrash, FaEdit } from "react-icons/fa";
-import { HiShare } from "react-icons/hi";
+import { HiPrinter } from "react-icons/hi";
 
 const TodosCard = ({ userId }) => {
   const [todoList, setTodoList] = useState([]);
@@ -20,25 +20,24 @@ const TodosCard = ({ userId }) => {
   const baseURL = "https://bosy-backend.vercel.app";
 
   useEffect(() => {
-    const handleFetchTodo = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(
-          `${baseURL}/api/todos?userId=${userId}`
-        );
-        const todoData = response.data;
-        setTodoList(todoData);
-      } catch (error) {
-        console.error("Error fetching todos:", error);
-        toast.error("Error fetching todos!");
-      } finally {
-        setLoading(false);
-      }
-    };
-    handleFetchTodo();
-  }, [userId]);
+    handleFetchTodo({ userId });
+  }, []);
 
-  const handleAddTodo = async () => {
+  const handleFetchTodo = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(`${baseURL}/api/todos/userId=${userId}`);
+      const todoData = response.data;
+      setTodoList(todoData);
+    } catch (error) {
+      console.error("Error fetching todos:", error);
+      toast.error("Error fetching todos!");
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleAddTodo = async (e) => {
+    e.preventDefault();
     try {
       const insertTodo = await axios.post(`${baseURL}/api/todos`, data);
       toast.success(insertTodo.data.message);
@@ -88,16 +87,19 @@ const TodosCard = ({ userId }) => {
     setUpdateModal(true);
   };
 
-  const handleShareTodo = async (_id) => {
+  const handlePrintTodo = async (_id) => {
     try {
       const todo = todoList.find((todo) => todo._id === _id);
       if (!todo) {
         toast.error("Todo not found.");
         return;
       }
-      const response = await axios.post(`${baseURL}/api/todos/${_id}`, todo);
-      const { whatsappLink } = response.data;
-      setWhatsappLink(whatsappLink);
+      const formattedTodo = `
+      Title: ${todo.title}
+      Description: ${todo.description}
+    `;
+      console.log("Todo to be printed:", formattedTodo);
+      window.print(formattedTodo);
     } catch (error) {
       console.error("Error sharing todo:", error);
     }
@@ -138,9 +140,9 @@ const TodosCard = ({ userId }) => {
                 </button>
                 <button
                   className="btn btn-light text-primary"
-                  onClick={() => handleShareTodo(done._id)}
+                  onClick={() => handlePrintTodo(done._id)}
                 >
-                  <HiShare size={20} className="text-dark" />
+                  <HiPrinter size={20} className="text-dark" />
                 </button>
               </div>
               <div className="bg-light-green text-center">

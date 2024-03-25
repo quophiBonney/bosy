@@ -11,7 +11,6 @@ const TodosSchema = new mongoose.Schema({
   },
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
   },
   time: {
     type: Date,

@@ -1,15 +1,9 @@
-const Todos = require("../models/todos.model");
+const Todos = require("../models/todos.model.js");
 const axios = require("axios");
 
 const getTodos = async (req, res) => {
   try {
-    const userId = req.params.userId;
-    // Validate userId (example)
-    if (!isValidUserId(userId)) {
-      return res.status(400).json({ message: "Invalid user ID" });
-    }
-    console.log("req.params:", req.params);
-    const todos = await Todos.find({ userId });
+    const todos = await Todos.find({});
     res.status(200).json(todos);
   } catch (error) {
     console.error("Error fetching todos:", error);
