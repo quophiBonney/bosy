@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import { HiShare } from "react-icons/hi";
 
-const TodosCard = ({ todoData }) => {
+const TodosCard = ({ userId }) => {
   const [todoList, setTodoList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
@@ -13,7 +13,6 @@ const TodosCard = ({ todoData }) => {
   const [selectedTodo, setSelectedTodo] = useState(null);
   const handleClose = () => setShow(false);
   const handleCloseUpdateModal = () => setUpdateModal(false);
-  const [whatsappLink, setWhatsappLink] = useState("");
   const [data, setData] = useState({
     title: "",
     description: "",
@@ -21,18 +20,23 @@ const TodosCard = ({ todoData }) => {
   const baseURL = "https://bosy-backend.vercel.app";
 
   useEffect(() => {
+    const handleFetchTodo = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(
+          `${baseURL}/api/todos?userId=${userId}`
+        );
+        const todoData = response.data;
+        setTodoList(todoData);
+      } catch (error) {
+        console.error("Error fetching todos:", error);
+        toast.error("Error fetching todos!");
+      } finally {
+        setLoading(false);
+      }
+    };
     handleFetchTodo();
-  }, []);
-
-  const handleFetchTodo = async () => {
-    try {
-      const response = await axios.get(`${baseURL}/api/todos`);
-      const todoData = response.data;
-      setTodoList(todoData);
-    } catch (error) {
-      console.error("Error fetching todos:", error.message);
-    }
-  };
+  }, [userId]);
 
   const handleAddTodo = async () => {
     try {
@@ -232,5 +236,4 @@ const TodosCard = ({ todoData }) => {
     </>
   );
 };
-
 export default TodosCard;

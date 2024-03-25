@@ -1,11 +1,11 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config({path: __dirname+'/.env'});
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config({ path: __dirname + "/.env" });
 }
 const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const TodoModel = require("./models/todos.module.js");
+const TodoModel = require("./models/todos.model.js");
 const todoRoutes = require("./routes/todos.route.js");
 
 dotenv.config();

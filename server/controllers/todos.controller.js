@@ -1,12 +1,19 @@
-const Todos = require("../models/todos.module");
+const Todos = require("../models/todos.model");
 const axios = require("axios");
+
 const getTodos = async (req, res) => {
   try {
     const userId = req.params.userId;
+    // Validate userId (example)
+    if (!isValidUserId(userId)) {
+      return res.status(400).json({ message: "Invalid user ID" });
+    }
+    console.log("req.params:", req.params);
     const todos = await Todos.find({ userId });
     res.status(200).json(todos);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Error fetching todos:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
